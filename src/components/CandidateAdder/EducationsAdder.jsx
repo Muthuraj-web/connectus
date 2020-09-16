@@ -131,7 +131,7 @@ class EducationsAdder extends Component {
 
     skip=async(section,e)=>{
         e.preventDefault()
-        await Axios.post(`http://localhost:8080/candidate/toggle/${section}`,{jwt:localStorage.getItem('jwt')})
+        await Axios.post(`https://connectus-backend.herokuapp.com/candidate/toggle/${section}`,{jwt:localStorage.getItem('jwt')})
         this.props.history.push('/candidate/add/interests')
     }
 
@@ -146,7 +146,7 @@ class EducationsAdder extends Component {
                 timeline:{start:{month:each.start.month.value,year:Number(each.start.year.value)},end:{month:each.end.month.value,year:Number(each.end.year.value)}}
             })
         })
-        await Axios.put(`http://localhost:8080/candidate/add/educations`,{requestData,jwt:localStorage.getItem('jwt')})
+        await Axios.put(`https://connectus-backend.herokuapp.com/candidate/add/educations`,{requestData,jwt:localStorage.getItem('jwt')})
         if(this.props.save) this.props.history.replace(`/candidate/${_id()}`)
         else this.props.history.push(`/candidate/add/interests`)
         

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {decode} from 'jsonwebtoken'
 import {Link} from 'react-router-dom'
 class Topnav extends Component {
 
@@ -13,7 +12,7 @@ class Topnav extends Component {
         console.log(this.props)
         return (
             <nav className="sticky-top m-0 p-1 border-bottom" style={{backgroundColor:"white"}}>
-                <Link to="/"><img style={{width:"200px",height:"auto"}} src={process.env.PUBLIC_URL+"/connectus.png"}></img></Link>
+                <Link to="/"><img alt={'l'} style={{width:"200px",height:"auto"}} src={process.env.PUBLIC_URL+"/connectus.png"}></img></Link>
                 {
                     localStorage.getItem("jwt")&&(localStorage.getItem("type")==="candidate"||localStorage.getItem("type")==="company")?
                     <React.Fragment>

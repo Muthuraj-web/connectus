@@ -10,7 +10,7 @@ function WorksSection(props) {
                 props.works.map(each=>
                     <div className="pl-3 pr-3 pb-4 border-bottom pt-3 m-0" key={each._id} style={{width:"100%",display:"flex"}}>
                         <div>
-                            <img src={each.logo==="default"?process.env.PUBLIC_URL+'/company-logo.jpeg':each.logo}  style={{width:"50px",height:"50px"}} />
+                            <img alt={each.company} src={each.logo==="default"?process.env.PUBLIC_URL+'/company-logo.jpeg':each.logo}  style={{width:"50px",height:"50px"}} />
                         </div>
                         <div className="pl-3 pb-4 work_n_education-info">
                             <h5 className="m-0">{each.role}</h5>

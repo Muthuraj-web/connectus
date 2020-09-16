@@ -12,7 +12,7 @@ class CompanyHome extends Component {
     }
 
     async componentDidMount(){
-        const result = await Axios.get(`http://localhost:8080/company/${decode(localStorage.getItem("jwt"))._id}`)
+        const result = await Axios.get(`https://connectus-backend.herokuapp.com/company/${decode(localStorage.getItem("jwt"))._id}`)
         console.log(result.data)
         this.setState({
             company:result.data,

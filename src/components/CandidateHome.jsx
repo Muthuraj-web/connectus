@@ -21,7 +21,7 @@ class CandidateHome extends Component {
         this.setState({
             loading:true
         })
-        const {data} = await Axios.get(`http://localhost:8080/candidate/${this.props.match.params.id}`)
+        const {data} = await Axios.get(`https://connectus-backend.herokuapp.com/candidate/${this.props.match.params.id}`)
         const editable = decode(localStorage.getItem("jwt")) && decode(localStorage.getItem("jwt"))._id===this.props.match.params.id && (localStorage.getItem("type")==="candidate")
         this.setState({
             candidate:data,

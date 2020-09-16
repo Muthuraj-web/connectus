@@ -36,7 +36,7 @@ class Aboutus extends Component {
     submit=async(e)=>{
         e.preventDefault()
         const requestData = {aboutus:this.state.info[0].aboutus.value}
-        const result = await Axios.put("http://localhost:8080/company/add/aboutus",{requestData,jwt:localStorage.getItem('jwt')})  
+        const result = await Axios.put("https://connectus-backend.herokuapp.com/company/add/aboutus",{requestData,jwt:localStorage.getItem('jwt')})  
         if(result.status===200){
             this.props.history.replace(`/company/${decode(localStorage.getItem("jwt"))._id}`)
         }

@@ -118,7 +118,7 @@ class WorksAdder extends Component {
         let {info,suggestions} = this.state
         const index = info.findIndex(each=>each.unique===unique)
         info[index][name].value = value
-        if(name=="company"){
+        if(name==="company"){
             const logoIndex = suggestions[index][name].findIndex(each=>each.name===value)
             info[index].logo = suggestions[index][name][logoIndex].logo
         } 
@@ -145,7 +145,7 @@ class WorksAdder extends Component {
     }
     skip=async(section,e)=>{
         e.preventDefault()
-        await Axios.post(`http://localhost:8080/candidate/toggle/${section}`,{jwt:localStorage.getItem('jwt')})
+        await Axios.post(`https://connectus-backend.herokuapp.com/candidate/toggle/${section}`,{jwt:localStorage.getItem('jwt')})
         this.props.history.push('/candidate/add/projects')
     }
     submit=async(e)=>{
@@ -160,7 +160,7 @@ class WorksAdder extends Component {
                 timeline:{start:{month:each.start.month.value,year:Number(each.start.year.value)},end:{month:each.end.month.value,year:Number(each.end.year.value)}}
             })
         })
-        const result = await Axios.put("http://localhost:8080/candidate/add/works",{requestData,jwt:localStorage.getItem('jwt')})
+        const result = await Axios.put("https://connectus-backend.herokuapp.com/candidate/add/works",{requestData,jwt:localStorage.getItem('jwt')})
         if (result.status===200){
             if (this.props.save){
                 this.props.history.replace(`/candidate/${_id()}`)

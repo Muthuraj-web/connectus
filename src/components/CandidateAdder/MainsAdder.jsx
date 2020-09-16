@@ -27,7 +27,7 @@ class MainsAdder extends Component {
         console.log(obj)
         if(this.props.save){
             if(this.props.company) {
-                const mains = await (await Axios.get(`http://localhost:8080/company/mains/${decode(localStorage.getItem("jwt"))._id}`)).data.mains
+                const mains = await (await Axios.get(`https://connectus-backend.herokuapp.com/company/mains/${decode(localStorage.getItem("jwt"))._id}`)).data.mains
                 console.log(mains,obj)
                 obj.coverphoto['uploaded'] = mains.coverphoto
                 obj.shortdescription.value = mains.shortdescription
@@ -105,8 +105,16 @@ class MainsAdder extends Component {
     submit=async(e)=>{
         e.preventDefault()
         let {profile,coverphoto} = this.state.info[0]
-        profile = 'https://connectus-bucket.s3.ap-south-1.amazonaws.com/DSC_5681.JPG'
-        coverphoto = "https://connectus-bucket.s3.ap-south-1.amazonaws.com/clark-tibbs-oqStl2L5oxI-unsplash.jpg"
+        if(!this.props.save){
+            profile = await saveImage(profile.file)
+            coverphoto = await saveImage(coverphoto.file)
+        }
+        else{
+            profile = profile.uploaded
+            coverphoto = coverphoto.uploaded
+            if(Object.keys(profile).includes('file')) profile = await saveImage(profile.file)
+            if(Object.keys(coverphoto).includes('file')) coverphoto = await saveImage(coverphoto.file)
+        }
         let {shortdescription,githubLink,instagramLink,twitterLink,websiteLink} = this.state.info[0]
         let requestData={
             profile:profile,
@@ -131,10 +139,10 @@ class MainsAdder extends Component {
         console.log(requestData)
         let result = {}
         if(this.props.company){
-            result = await Axios.put("http://localhost:8080/company/add/mains",{requestData,jwt:localStorage.getItem('jwt')})  
+            result = await Axios.put("https://connectus-backend.herokuapp.com/company/add/mains",{requestData,jwt:localStorage.getItem('jwt')})  
         }
         else{
-            result = await Axios.put("http://localhost:8080/candidate/add/mains",{requestData,jwt:localStorage.getItem('jwt')})
+            result = await Axios.put("https://connectus-backend.herokuapp.com/candidate/add/mains",{requestData,jwt:localStorage.getItem('jwt')})
 
         } 
         if (result.status===200){

@@ -1,4 +1,4 @@
-import React, { Component,ReactDOM } from 'react';
+import React, { Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import Input from './AuthInput/InputComponent';
 import Joi from "joi";
@@ -73,7 +73,7 @@ class Auth extends Component {
         })
         console.log(send)
         if(this.props.location.pathname==="/company/auth/login"){
-            const {data} = await Axios.post('http://localhost:8080/company/login',{...send})
+            const {data} = await Axios.post('https://connectus-backend.herokuapp.com/company/login',{...send})
             if(data.error) this.credentialErrorUpdater(data.error)
             else{
                 localStorage.setItem('jwt',data.jwt)
@@ -84,7 +84,7 @@ class Auth extends Component {
             return
         }
         else if(this.props.location.pathname==="/company/auth/signup"){
-            const {data} = await Axios.post('http://localhost:8080/company/signup',{...send})
+            const {data} = await Axios.post('https://connectus-backend.herokuapp.com/company/signup',{...send})
             if(data.error) this.credentialErrorUpdater(data.error)
             else{
                 localStorage.setItem('jwt',data.jwt)
@@ -94,7 +94,7 @@ class Auth extends Component {
             return
         }
         else if(this.props.location.pathname==="/candidate/auth/login"){
-            const {data} = await Axios.post('http://localhost:8080/candidate/login',{...send})
+            const {data} = await Axios.post('https://connectus-backend.herokuapp.com/candidate/login',{...send})
             if(data.error) this.credentialErrorUpdater(data.error)
             else{
                 localStorage.setItem('jwt',data.jwt)
@@ -103,9 +103,9 @@ class Auth extends Component {
                 this.props.history.replace(`/candidate/${_id}`)
             }
         }
-        else if(this.props.location.pathname="/candidate/auth/signup"){
+        else if(this.props.location.pathname==="/candidate/auth/signup"){
             console.log("yes")
-            const {data} = await Axios.post('http://localhost:8080/candidate/signup',{...send})
+            const {data} = await Axios.post('https://connectus-backend.herokuapp.com/candidate/signup',{...send})
             console.log(data)
             if(data.error) this.credentialErrorUpdater(data.error)
             else{
@@ -124,11 +124,11 @@ class Auth extends Component {
             <div className="container p-5">
                 <div className="row">
                 <div className="col-sm-6 p-0 m-0 mobile-hider">
-                    <img className="h-100 p-0 m-0 w-100 rounded" style={{objectFit:"cover"}} src={`${process.env.PUBLIC_URL}/authimg.jpg`}/>
+                    <img alt={'design'} className="h-100 p-0 m-0 w-100 rounded" style={{objectFit:"cover"}} src={`${process.env.PUBLIC_URL}/authimg.jpg`}/>
                 </div>
                 <div className="col-sm-6 p-0 m-0">
                     <div className="auth-right-container w-100 m-sm-4">
-                        <img style={{width:"100%"}} src={process.env.PUBLIC_URL+"/connectus.png"}></img>
+                        <img alt={'logo'} style={{width:"100%"}} src={process.env.PUBLIC_URL+"/connectus.png"}></img>
                         {this.state.credentialError?<h6 className="text-danger pb-2 pt-2 border rounded border-danger text-center"><i>{this.state.credentialError}</i></h6>:<React.Fragment/>}
                     <form>
                         {   

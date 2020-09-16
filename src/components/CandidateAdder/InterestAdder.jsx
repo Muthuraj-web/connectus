@@ -87,7 +87,7 @@ class SkillsAdder extends Component {
             this.state.info.forEach(each=>{
                 interests.push(each.value)
             })
-            const result = await Axios.put(`http://localhost:8080/candidate/add/interests`,{requestData:interests,jwt:localStorage.getItem('jwt')})
+            const result = await Axios.put(`https://connectus-backend.herokuapp.com/candidate/add/interests`,{requestData:interests,jwt:localStorage.getItem('jwt')})
             if (result.status===200) this.props.history.replace(`/candidate/${_id()}`)
         }
         catch(err){

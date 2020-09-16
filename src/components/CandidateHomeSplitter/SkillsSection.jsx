@@ -26,7 +26,7 @@ class SkillsSection extends Component {
     }
     submit=async(e)=>{
         e.preventDefault()
-        const {data} = await Axios.post(`http://localhost:8080/skilltest/checkskill/${this.state.value}`,{jwt:localStorage.getItem('jwt')})
+        const {data} = await Axios.post(`https://connectus-backend.herokuapp.com/skilltest/checkskill/${this.state.value}`,{jwt:localStorage.getItem('jwt')})
         if(data.error){
             this.setState({
                 serverError:data.error
@@ -59,6 +59,7 @@ class SkillsSection extends Component {
                             {    
                                 this.props.skills.map(each=>{
                                     if(!each.verified) return <option style={{fontStyle:"italic"}} value={each.name}>{each.name}</option>
+                                    return <React.Fragment/>
                                 })
                             }
                         </select>

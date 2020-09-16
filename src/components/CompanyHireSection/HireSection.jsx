@@ -120,7 +120,7 @@ class HireSection extends Component {
         this.setState({
             loading:true
         })
-        const result = await Axios.get(`http://localhost:8080/company/hire?role=${role}&&skills=${skills}&&minExp=${minExp}&&maxExp=${maxExp}&&sortByExp=1`)
+        const result = await Axios.get(`https://connectus-backend.herokuapp.com/company/hire?role=${role}&&skills=${skills}&&minExp=${minExp}&&maxExp=${maxExp}&&sortByExp=1`)
         if(result.data.length){
             this.setState({
                 error:undefined,

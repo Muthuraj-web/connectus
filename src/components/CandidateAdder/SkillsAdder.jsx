@@ -95,7 +95,7 @@ class SkillsAdder extends Component {
             })
             skills.pop()
             console.log(skills)
-            const result = await Axios.put("http://localhost:8080/candidate/add/skills",{requestData:skills,jwt:localStorage.getItem('jwt')})
+            const result = await Axios.put("https://connectus-backend.herokuapp.com/candidate/add/skills",{requestData:skills,jwt:localStorage.getItem('jwt')})
             if (result.status===200){
                 if (this.props.save){
                     this.props.history.replace(`/candidate/${_id()}`)

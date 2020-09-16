@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import EditButton from './EditButton'
 
 function EducationSection(props) {
@@ -9,7 +9,7 @@ function EducationSection(props) {
                 props.educations.map(each=>
                     <div className="p-3 m-0" key={each._id} style={{width:"100%",display:"flex"}}>
                         <div>
-                            <img src={process.env.PUBLIC_URL+'/company-logo.jpeg'}  style={{width:"50px",height:"50px"}} />
+                            <img alt={each.institute} src={process.env.PUBLIC_URL+'/company-logo.jpeg'}  style={{width:"50px",height:"50px"}} />
                         </div>
                         <div className="pl-3 pb-4 work_n_education-info">
                             <h6 className="m-0">{each.institute}</h6>

@@ -42,13 +42,13 @@ export const giveRoles=async(value)=>{
     return await Axios.get(`http://api.dataatwork.org/v1/jobs/autocomplete?begins_with="${value}"`)
 }
 export const giveSkills=async(value)=>{
-    return await Axios.get(`http://localhost:8080/skills/${value}`)
+    return await Axios.get(`https://connectus-backend.herokuapp.com/skills/${value}`)
 }
 export const giveUniversities=async(value)=>{
     return await Axios.get(`http://universities.hipolabs.com/search?name=${value}`)
 }
 export const giveCourses = async(value)=>{
-    return await Axios.get(`http://localhost:8080/university/${value}`)
+    return await Axios.get(`https://connectus-backend.herokuapp.com/university/${value}`)
   
 }
 

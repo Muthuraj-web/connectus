@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import {faEllipsisH} from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {decode} from 'jsonwebtoken'
 
 class EditButton extends Component {
 

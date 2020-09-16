@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import copy from 'copy-to-clipboard'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCopy, faClipboard, faClone, faPaste } from '@fortawesome/free-solid-svg-icons';
+import { faPaste } from '@fortawesome/free-solid-svg-icons';
 
 class SocialMediaSection extends Component {
 
@@ -35,14 +35,14 @@ class SocialMediaSection extends Component {
                 {
                     social_media.website?
                     <div>
-                        <img onClick={()=>{this.valueChanger(this.props.email)}} src="https://img.icons8.com/doodle/48/000000/email--v1.png"/>
-                        <img onClick={()=>{this.valueChanger(social_media.website)}} src="https://img.icons8.com/color/48/000000/domain--v1.png"/>
+                        <img alt={"email"} onClick={()=>{this.valueChanger(this.props.email)}} src="https://img.icons8.com/doodle/48/000000/email--v1.png"/>
+                        <img alt={"wesite"} onClick={()=>{this.valueChanger(social_media.website)}} src="https://img.icons8.com/color/48/000000/domain--v1.png"/>
                     </div>:
                     <div>
-                        <img onClick={()=>{this.valueChanger(social_media.twitter)}} src="https://img.icons8.com/color/48/000000/twitter-squared.png"/>
-                        <img onClick={()=>{this.valueChanger(social_media.github)}} src="https://img.icons8.com/fluent/48/000000/github.png"/>
-                        <img onClick={()=>{this.valueChanger(this.props.email)}} src="https://img.icons8.com/doodle/48/000000/email--v1.png"/>
-                        <img onClick={()=>{this.valueChanger(social_media.instagram)}} src="https://img.icons8.com/fluent/48/000000/instagram-new.png"/>
+                        <img alt={"twitter"} onClick={()=>{this.valueChanger(social_media.twitter)}} src="https://img.icons8.com/color/48/000000/twitter-squared.png"/>
+                        <img alt={"git"} onClick={()=>{this.valueChanger(social_media.github)}} src="https://img.icons8.com/fluent/48/000000/github.png"/>
+                        <img alt={"email"} onClick={()=>{this.valueChanger(this.props.email)}} src="https://img.icons8.com/doodle/48/000000/email--v1.png"/>
+                        <img alt={"insta"} onClick={()=>{this.valueChanger(social_media.instagram)}} src="https://img.icons8.com/fluent/48/000000/instagram-new.png"/>
                     </div>
                 }
                 {

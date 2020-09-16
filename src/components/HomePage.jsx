@@ -1,9 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 import {decode} from 'jsonwebtoken'
-import Topnav from './Topnav'
 
 function HomePage(props) {
+    console.log(process.env.REACT_APP_a)
     if(localStorage.getItem('jwt') && localStorage.getItem("type")){
         const jwt = localStorage.getItem('jwt')
         const type = localStorage.getItem('type')

@@ -134,7 +134,7 @@ class ProjectsAdder extends Component {
     
     skip=async(section,e)=>{
         e.preventDefault()
-        await Axios.post(`http://localhost:8080/candidate/toggle/${section}`,{jwt:localStorage.getItem('jwt')})
+        await Axios.post(`https://connectus-backend.herokuapp.com/candidate/toggle/${section}`,{jwt:localStorage.getItem('jwt')})
         this.props.history.push('/candidate/add/educations')
     }
 
@@ -151,7 +151,7 @@ class ProjectsAdder extends Component {
             })
         })
        
-        const result = await Axios.put("http://localhost:8080/candidate/add/projects",{requestData,jwt:localStorage.getItem('jwt')})
+        const result = await Axios.put("https://connectus-backend.herokuapp.com/candidate/add/projects",{requestData,jwt:localStorage.getItem('jwt')})
         console.log(result)
         if (result.status===200){
             if (this.props.save){

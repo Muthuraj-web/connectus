@@ -10,8 +10,8 @@ function ProfilePhotoSection(props) {
     }
     return (
         <div className="container box-shadow w-100 p-0 m-0" style={{backgroundColor:"inherit",position:"relative"}}>
-            <img className="p-0 m-0" src={props.mains.coverphoto} style={{width:"100%",height:"30vh",objectFit:"cover"}} />
-            <img src={props.mains.profile} style={{objectFit:"cover"}} className="profile-photo"/>
+            <img className="p-0 m-0" alt={'cover'} src={props.mains.coverphoto} style={{width:"100%",height:"30vh",objectFit:"cover"}} />
+            <img src={props.mains.profile} alt={'profile'} style={{objectFit:"cover"}} className="profile-photo"/>
             <div className="row profile-inner-div">
                 <div className="col-sm-6">
                     <h4 className="candidate-name" >{props.name||props.company}</h4>

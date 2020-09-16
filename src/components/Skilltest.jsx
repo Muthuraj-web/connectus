@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import {isAuthToEdit} from '../data'
 import Axios from 'axios'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import { faCheckCircle, faCross, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
-import {_id} from '../data'
+import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 class Skilltest extends Component {
     state={
         result:null,
@@ -16,7 +15,7 @@ class Skilltest extends Component {
         this.setState({
             loading:true
         })
-        const {data} = await Axios.post(`http://localhost:8080/skilltest/${this.props.match.params.skill}`,{jwt:localStorage.getItem('jwt')})
+        const {data} = await Axios.post(`https://connectus-backend.herokuapp.com/skilltest/${this.props.match.params.skill}`,{jwt:localStorage.getItem('jwt')})
         let answers=[]
         for(let i=0;i<data.test.length;i++){
             answers.push(null)
@@ -46,7 +45,7 @@ class Skilltest extends Component {
         this.setState({
             loading:true
         })
-        const {data} = await Axios.post(`http://localhost:8080/skilltest/givegrade/${this.props.match.params.skill}`,{jwt:localStorage.getItem('jwt'),answers:this.state.answers})
+        const {data} = await Axios.post(`https://connectus-backend.herokuapp.com/skilltest/givegrade/${this.props.match.params.skill}`,{jwt:localStorage.getItem('jwt'),answers:this.state.answers})
         console.log(data)
         this.setState({result:data.result,loading:false})
     }
