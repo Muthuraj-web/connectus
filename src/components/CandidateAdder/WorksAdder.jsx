@@ -95,7 +95,6 @@ class WorksAdder extends Component {
         }
         let submit = false
         let start = 0
-        console.log(info)
         info.forEach(each=>{
             Object.keys(each).forEach(element=>{
                 console.log(element,Object.keys(info[start][element]).includes('error'))
@@ -103,7 +102,6 @@ class WorksAdder extends Component {
             })
             start+=1
         })
-        console.log(submit)
         info[index] = obj
 
         this.setState({
@@ -126,7 +124,6 @@ class WorksAdder extends Component {
         suggestions[index][name] = []
         let submit = false
         let start = 0
-        console.log(info)
         info.forEach(each=>{
             Object.keys(each).forEach(element=>{
                 console.log(element,Object.keys(info[start][element]).includes('error'))
@@ -134,7 +131,6 @@ class WorksAdder extends Component {
             })
             start+=1
         })
-        console.log(submit)
         this.setState({
             info,
             suggestions,

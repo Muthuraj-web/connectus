@@ -1,9 +1,8 @@
 import Axios from 'axios'
 export async function saveImage(file){
     try{
-        const {data} = await Axios.post("https://connectus-backend.herokuapp.com/getSignedURL/URL",{jwt:localStorage.getItem('jwt'),type:file.type,name:file.name})
-        console.log(data)
-        await Axios.put(data.url,file,{
+        const {data} = await Axios.post('https://connectus-backend.herokuapp.com/signedurl',{jwt:localStorage.getItem("jwt"),name:file.name,type:file.type})
+        await Axios.put(data,file,{
             headers:{
                 'Content-Type':file.type
             }

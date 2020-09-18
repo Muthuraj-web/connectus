@@ -91,10 +91,8 @@ class HireSection extends Component {
         suggestions[0][name] = []
         let start = 0
         let submit = false
-        console.log(info)
         info.forEach(each=>{
             Object.keys(each).forEach(element=>{
-                console.log(element,Object.keys(info[start][element]).includes('error'))
                 submit = submit || Object.keys(info[start][element]).includes('error')
             })
             start+=1
@@ -109,7 +107,6 @@ class HireSection extends Component {
     }
 
     submit=async(e)=>{
-        console.log("YYY")
         e.preventDefault()
         const minExp = this.state.info[0].minimum_experience.value
         const maxExp = this.state.info[0].maximum_experience.value
@@ -137,7 +134,6 @@ class HireSection extends Component {
         }
     }
     render() {
-        console.log(this.props)
         return (
             <React.Fragment>
             <div className="container pl-5 pr-5 pt-2 pb-2 rounded" style={{backgroundColor:"lightgrey"}}>

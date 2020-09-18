@@ -29,7 +29,6 @@ class SocialMediaSection extends Component {
 
     render() {
         const {social_media} = this.props
-        console.log(this.state,this.props)
         return (
             <React.Fragment>
                 {

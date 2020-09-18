@@ -14,7 +14,6 @@ class EditButton extends Component {
     }
 
     render() {
-        console.log(`${localStorage.getItem("type")}/save/${this.props.target}`)
         return (
             <div style={{position:"absolute",top:"20px",right:"20px"}}>
                 <div>

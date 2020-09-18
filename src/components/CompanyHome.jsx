@@ -13,7 +13,6 @@ class CompanyHome extends Component {
 
     async componentDidMount(){
         const result = await Axios.get(`https://connectus-backend.herokuapp.com/company/${decode(localStorage.getItem("jwt"))._id}`)
-        console.log(result.data)
         this.setState({
             company:result.data,
             editable:this.props.match.params.id===decode(localStorage.getItem("jwt"))._id,
@@ -21,7 +20,6 @@ class CompanyHome extends Component {
         })
     }
     render() {
-        console.log(this.state)
         const editable = this.state.editable
         if(Object.keys(this.state.company).length!==0)
         {

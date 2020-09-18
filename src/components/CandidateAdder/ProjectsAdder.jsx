@@ -92,14 +92,12 @@ class ProjectsAdder extends Component {
         }
         let submit = false
         let start = 0
-        console.log(info)
         info.forEach(each=>{
             Object.keys(each).forEach(element=>{
                 submit = submit || Object.keys(info[start][element]).includes('error')
             })
             start+=1
         })
-        console.log(submit)
         info[index] = obj
         this.setState({
             info,
@@ -116,7 +114,6 @@ class ProjectsAdder extends Component {
         suggestions[index][name] = []
         let submit = false
         let start = 0
-        console.log(info)
         info.forEach(each=>{
             Object.keys(each).forEach(element=>{
                 console.log(element,Object.keys(info[start][element]).includes('error'))
@@ -152,7 +149,6 @@ class ProjectsAdder extends Component {
         })
        
         const result = await Axios.put("https://connectus-backend.herokuapp.com/candidate/add/projects",{requestData,jwt:localStorage.getItem('jwt')})
-        console.log(result)
         if (result.status===200){
             if (this.props.save){
                 this.props.history.replace(`/candidate/${_id()}`)
@@ -163,7 +159,6 @@ class ProjectsAdder extends Component {
         }
     }
     render() {
-        console.log(this.state)
         if(isAuthToEdit("candidate")){
         return (
             <div className="adder-container">

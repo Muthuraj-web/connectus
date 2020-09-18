@@ -9,7 +9,6 @@ class Topnav extends Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <nav className="sticky-top m-0 p-1 border-bottom" style={{backgroundColor:"white"}}>
                 <Link to="/"><img alt={'l'} style={{width:"200px",height:"auto"}} src={process.env.PUBLIC_URL+"/connectus.png"}></img></Link>

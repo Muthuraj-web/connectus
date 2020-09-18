@@ -71,7 +71,6 @@ class Auth extends Component {
         this.state.info.forEach(each=>{
             send[each.name]=each.value
         })
-        console.log(send)
         if(this.props.location.pathname==="/company/auth/login"){
             const {data} = await Axios.post('https://connectus-backend.herokuapp.com/company/login',{...send})
             if(data.error) this.credentialErrorUpdater(data.error)
@@ -104,9 +103,7 @@ class Auth extends Component {
             }
         }
         else if(this.props.location.pathname==="/candidate/auth/signup"){
-            console.log("yes")
             const {data} = await Axios.post('https://connectus-backend.herokuapp.com/candidate/signup',{...send})
-            console.log(data)
             if(data.error) this.credentialErrorUpdater(data.error)
             else{
                 localStorage.setItem('jwt',data.jwt)
@@ -114,12 +111,10 @@ class Auth extends Component {
                 this.props.history.replace(`/candidate/add/mains`)
             }
             return
-
         }
     }
 
     render() {
-        console.log(this.props.location.pathname)
         return(
             <div className="container p-5">
                 <div className="row">

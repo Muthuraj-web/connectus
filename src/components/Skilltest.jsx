@@ -30,7 +30,6 @@ class Skilltest extends Component {
         let answers = this.state.answers
         answers[Number(e.currentTarget.name)] = value
         let submit=true
-        console.log(answers)
         if(answers.indexOf(null)===-1) submit=false
         this.setState({
             answers,
@@ -46,12 +45,10 @@ class Skilltest extends Component {
             loading:true
         })
         const {data} = await Axios.post(`https://connectus-backend.herokuapp.com/skilltest/givegrade/${this.props.match.params.skill}`,{jwt:localStorage.getItem('jwt'),answers:this.state.answers})
-        console.log(data)
         this.setState({result:data.result,loading:false})
     }
 
     render() {
-        console.log(this.state)
         let index = -1
         if(isAuthToEdit("candidate")){
             return(

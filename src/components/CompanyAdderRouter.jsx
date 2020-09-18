@@ -5,7 +5,6 @@ import AboutUs from './CompanyAdder/Aboutus'
 
 class CompanyAdderRouter extends Component {
     render() {
-        console.log(this.props)
         return (
             <Switch>
             <Route path={this.props.match.url+"/mains"} render={()=><MainsAdder {...this.props} company={true} />}/>

@@ -1,7 +1,6 @@
 import React from 'react';
 
 function Suggestion(props) {
-    console.log(props)
     if(props.suggestions&&props.suggestions.length){
         return(
         <div className="p-2 rounded" style={{position:"absolute",float:"bottom",backgroundColor:"white",zIndex:"1",maxHeight:"150px",overflowY:"scroll",width:"100%"}}>

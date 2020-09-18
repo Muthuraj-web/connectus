@@ -26,7 +26,7 @@ class SkillsSection extends Component {
     }
     submit=async(e)=>{
         e.preventDefault()
-        const {data} = await Axios.post(`https://connectus-backend.herokuapp.com/skilltest/checkskill/${this.state.value}`,{jwt:localStorage.getItem('jwt')})
+        const {data} = await Axios.post(`http://localhost:8080/skilltest/checkskill/${this.state.value}`,{jwt:localStorage.getItem('jwt')})
         if(data.error){
             this.setState({
                 serverError:data.error
@@ -37,7 +37,6 @@ class SkillsSection extends Component {
         else this.props.history.push(`/skilltest/${this.state.value}`)
     }
     render() {
-        console.log(this.state)
         return (
             <div className="container box-shadow w-100 h-auto pt-2 pl-2  mt-2 mb-2" style={{backgroundColor:"inherit"}}>
                 <h3 className="pl-2 pt-3 pb-2 m-0" style={{fontWeight:"300"}}>SKILLS</h3>

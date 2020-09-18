@@ -3,7 +3,6 @@ import SocialMediaSection from './SocialMediaSection';
 import EditButton from './EditButton'
 
 function ProfilePhotoSection(props) {
-    console.log(props)
     const RedirectToHire=(e)=>{
         e.preventDefault()
         props.history.push("/company/hire")

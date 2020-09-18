@@ -17,7 +17,6 @@ class CandidateHome extends Component {
     }
 
     async componentDidMount(){
-        console.log(this.props)
         this.setState({
             loading:true
         })
@@ -36,10 +35,9 @@ class CandidateHome extends Component {
         this.setState({
             candidate
         })
-        await Axios.post(`http://localhost:8080/candidate/toggle/${section}`,{jwt:localStorage.getItem("jwt")})
+        await Axios.post(`https://connectus-backend.herokuapp.com/candidate/toggle/${section}`,{jwt:localStorage.getItem("jwt")})
     }
     render() {
-        console.log(this.state)
         const editable = this.state.editable
             if(this.state.loading){
                 return(

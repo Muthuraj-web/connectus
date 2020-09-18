@@ -2,7 +2,6 @@ import React from 'react';
 import {yearArr,monthArr} from '../../data' 
 
 function Select(props) {
-    console.log(props)
     return (
         <div className="d-block">
         <span className="m-0 mt-2 pl-2" htmlFor={props.name}><b><i>{props.name}</i></b></span>

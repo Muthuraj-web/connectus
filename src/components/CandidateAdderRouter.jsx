@@ -9,7 +9,6 @@ import React, { Component } from 'react';
 
 class CandidateAdderRouter extends Component {
     render() {
-        console.log(this.props.match.url)
         return (
             <Switch>
             <Route path={this.props.match.url+"/mains"} render={()=><MainsAdder {...this.props} />}/>

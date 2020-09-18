@@ -3,12 +3,10 @@ import {Link} from 'react-router-dom'
 import {decode} from 'jsonwebtoken'
 
 function HomePage(props) {
-    console.log(process.env.REACT_APP_a)
     if(localStorage.getItem('jwt') && localStorage.getItem("type")){
         const jwt = localStorage.getItem('jwt')
         const type = localStorage.getItem('type')
         const _id = decode(jwt)._id
-        console.log(_id,type)
         props.history.replace(`/${type}/${_id}`)
         return null
     }

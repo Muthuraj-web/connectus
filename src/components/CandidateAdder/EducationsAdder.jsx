@@ -42,7 +42,6 @@ class EducationsAdder extends Component {
         let info=this.state.info
         if(name==="start"||name==="end"){
             const type = Boolean(Number(e.currentTarget.value))?"year":"month"
-            console.log(e.currentTarget.value,type)
             info[index][name][type].value = e.currentTarget.value
             this.setState({
                 info
@@ -88,7 +87,6 @@ class EducationsAdder extends Component {
 
         let submit = false
         let start = 0
-        console.log(info)
         info.forEach(each=>{
             Object.keys(each).forEach(element=>{
                 console.log(element,Object.keys(info[start][element]).includes('error'))
@@ -96,7 +94,6 @@ class EducationsAdder extends Component {
             })
             start+=1
         })
-        console.log(submit)
 
         info[index] = obj
         this.setState({
@@ -113,7 +110,6 @@ class EducationsAdder extends Component {
         suggestions[index][name] = []
         let submit = false
         let start = 0
-        console.log(info)
         info.forEach(each=>{
             Object.keys(each).forEach(element=>{
                 console.log(element,Object.keys(info[start][element]).includes('error'))

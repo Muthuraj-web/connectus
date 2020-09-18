@@ -69,7 +69,6 @@ class SkillsAdder extends Component {
         suggestions[index][name] = []
         let submit = false
         let start = 0
-        console.log(info)
         info.forEach(each=>{
             Object.keys(each).forEach(element=>{
                 console.log(element,Object.keys(info[start][element]).includes('error'))
@@ -94,7 +93,6 @@ class SkillsAdder extends Component {
                 skills.push({name:each})
             })
             skills.pop()
-            console.log(skills)
             const result = await Axios.put("https://connectus-backend.herokuapp.com/candidate/add/skills",{requestData:skills,jwt:localStorage.getItem('jwt')})
             if (result.status===200){
                 if (this.props.save){
@@ -107,7 +105,7 @@ class SkillsAdder extends Component {
 
         }
         catch(err){
-            console.log("unauthorized")
+            this.props.history.push("/unauthorized")
         }
     }
 

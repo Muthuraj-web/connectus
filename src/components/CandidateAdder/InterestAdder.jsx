@@ -91,7 +91,7 @@ class SkillsAdder extends Component {
             if (result.status===200) this.props.history.replace(`/candidate/${_id()}`)
         }
         catch(err){
-            console.log("unauthorized")
+            this.props.history.push("/unauthorized")
         }
     }
 

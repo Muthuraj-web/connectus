@@ -24,11 +24,9 @@ class MainsAdder extends Component {
             delete obj['twitterLink']
             delete obj['instagramLink']
         }
-        console.log(obj)
         if(this.props.save){
             if(this.props.company) {
                 const mains = await (await Axios.get(`https://connectus-backend.herokuapp.com/company/mains/${decode(localStorage.getItem("jwt"))._id}`)).data.mains
-                console.log(mains,obj)
                 obj.coverphoto['uploaded'] = mains.coverphoto
                 obj.shortdescription.value = mains.shortdescription
                 obj.profile['uploaded'] = mains.profile
@@ -37,8 +35,7 @@ class MainsAdder extends Component {
                 }
             }
             else {
-                const mains = await (await Axios.get(`http://localhost:8080/candidate/mains/${decode(localStorage.getItem("jwt"))._id}`)).data.mains
-                console.log(mains) 
+                const mains = await (await Axios.get(`https://connectus-backend.herokuapp.com/candidate/mains/${decode(localStorage.getItem("jwt"))._id}`)).data.mains
                 obj.coverphoto['uploaded'] = mains.coverphoto
                 obj.shortdescription.value = mains.shortdescription
                 obj.profile['uploaded'] = mains.profile
@@ -47,7 +44,6 @@ class MainsAdder extends Component {
                 obj.instagramLink.value = mains.social_media.instagram
             }
         }
-        console.log(obj,"SS")
         this.setState({
             info:[obj]
         })
@@ -67,7 +63,6 @@ class MainsAdder extends Component {
             }
         }
         else if(name === "coverphoto"){
-            console.log(e.currentTarget.files[0])
             if(obj[name].value==='') obj[name]['error'] = "Upload Cover photo"
             else{
                 obj[name]['file'] = e.currentTarget.files[0]
@@ -105,6 +100,7 @@ class MainsAdder extends Component {
     submit=async(e)=>{
         e.preventDefault()
         let {profile,coverphoto} = this.state.info[0]
+
         if(!this.props.save){
             profile = await saveImage(profile.file)
             coverphoto = await saveImage(coverphoto.file)
@@ -112,8 +108,13 @@ class MainsAdder extends Component {
         else{
             profile = profile.uploaded
             coverphoto = coverphoto.uploaded
-            if(Object.keys(profile).includes('file')) profile = await saveImage(profile.file)
-            if(Object.keys(coverphoto).includes('file')) coverphoto = await saveImage(coverphoto.file)
+            if(this.state.info[0].profile.file){
+                profile = await saveImage(this.state.info[0].profile.file)
+            }
+            if(this.state.info[0].coverphoto.file){
+                
+                coverphoto = await saveImage(this.state.info[0].coverphoto.file)
+            }
         }
         let {shortdescription,githubLink,instagramLink,twitterLink,websiteLink} = this.state.info[0]
         let requestData={
@@ -136,7 +137,6 @@ class MainsAdder extends Component {
             }
         }
 
-        console.log(requestData)
         let result = {}
         if(this.props.company){
             result = await Axios.put("https://connectus-backend.herokuapp.com/company/add/mains",{requestData,jwt:localStorage.getItem('jwt')})  
@@ -159,7 +159,6 @@ class MainsAdder extends Component {
     }
     render() {
         if(isAuthToEdit(this.props.company?"company":"candidate")){
-        console.log(this.props)
         return (
             <div className="adder-container p-2">
                 <h5 className="bold-italic pl-2 pt-5 pb-5">Add the given details Below</h5>
